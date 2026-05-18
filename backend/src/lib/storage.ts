@@ -22,7 +22,7 @@ let cachedClient: S3Client | undefined;
 function getClient(): S3Client {
   if (!cachedClient) {
     cachedClient = new S3Client({
-      region: "auto",
+      region: process.env.R2_REGION ?? "auto",
       endpoint: process.env.R2_ENDPOINT_URL!,
       forcePathStyle: true,
       credentials: {
